@@ -1,4 +1,5 @@
 #' Download Company Lists From Exchanges
+#'
 #' Download Company Lists From Financial Exchanges such as NASDAQ, NYSE, AMEX.
 #' Save the Company List in csv format.
 #' @param exchanges Name of the Exchange(s). Supported: NASDAQ, NYSE, AMEX.

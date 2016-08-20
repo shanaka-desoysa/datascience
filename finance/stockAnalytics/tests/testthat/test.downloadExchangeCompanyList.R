@@ -21,15 +21,19 @@ test_that("downloadExchangeCompanyList: Data folder was  created.", {
     }
 })
 
-test_that("downloadExchangeCompanyList: Single output file name.", {
+test_that("downloadExchangeCompanyList: Single output file.", {
     # Initialize
     exchange = "NASDAQ"
     dataFolder = "./datatest"
 
     actual <- unlist(downloadExchangeCompanyList(exchange, dataFolder))
     expected <- paste(dataFolder, "/", exchange, "-companylist", ".csv", sep = "")
-    printActualExpected(actual, expected)
-    expect_equal(actual, expected, msg = "File name is not in correct format.")
+    #printActualExpected(actual, expected)
+    expect_equal(actual, expected, info = "File name is not in correct format.")
+    expect_true(file.exists(expected), info = "File does not exist.")
+    csvFile <- read.csv(expected)
+    expect_true("Symbol" %in% colnames(csvFile), info = "Column Symbol does not exist")
+    expect_true("Name" %in% colnames(csvFile), info = "Column Name does not exist")
 
     # Cleanup
     if (file.exists(dataFolder)) {
@@ -37,15 +41,21 @@ test_that("downloadExchangeCompanyList: Single output file name.", {
     }
 })
 
-test_that("downloadExchangeCompanyList: Multiple output file names.", {
+test_that("downloadExchangeCompanyList: Multiple output files.", {
     # Initialize
-    exchange = c("NASDAQ", "NYSE")
+    exchanges = c("NASDAQ", "NYSE")
     dataFolder = "./datatest"
 
-    actual <- unlist(downloadExchangeCompanyList(exchange, dataFolder))
-    expected <- unlist(paste(dataFolder, "/", exchange, "-companylist", ".csv", sep = ""))
-    printActualExpected(actual, expected)
-    expect_equal(actual, expected, msg = "File name is not in correct format.")
+    lapply(exchanges, function(exchange) {
+        actual <- unlist(downloadExchangeCompanyList(exchange, dataFolder))
+        expected <- paste(dataFolder, "/", exchange, "-companylist", ".csv", sep = "")
+        #printActualExpected(actual, expected)
+        expect_equal(actual, expected, info = "File name is not in correct format.")
+        expect_true(file.exists(expected), info = "File does not exist.")
+        csvFile <- read.csv(expected)
+        expect_true("Symbol" %in% colnames(csvFile), info = "Column Symbol does not exist")
+        expect_true("Name" %in% colnames(csvFile), info = "Column Name does not exist")
+    })
 
     # Cleanup
     if (file.exists(dataFolder)) {
