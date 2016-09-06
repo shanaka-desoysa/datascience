@@ -18,7 +18,7 @@
 downloadExchangeCompanyList <-
 function(
     exchanges,
-    dataFolder,
+    dataFolder = "./data",
     fileNameAppend = "companylist",
     outputColumns = c("Symbol", "Name"),
     formatSymbol = TRUE) {
@@ -42,19 +42,19 @@ function(
         # print(dataFileUrl)
         if (!file.exists(dataFile)) {
             download.file(dataFileUrl, destfile = dataFile)
+            # Only output specified columns.
+            if (file.exists(dataFile)) {
+                csvData <- read.csv(dataFile)
+                csvData <- csvData[, outputColumns]
+            
+                if (formatSymbol) {
+                    # Format symbols in EXCHANGE:SYMBOL format.
+                    csvData$Symbol <- paste(exchange, csvData$Symbol, sep = ":")
+                }
+                write.csv(csvData, file = dataFile, row.names = FALSE)
+            }
         }
 
-        # Only output specified columns.
-        if (file.exists(dataFile)) {
-            csvData <- read.csv(dataFile)
-            csvData <- csvData[, outputColumns]
-            
-            if (formatSymbol) {
-                # Format symbols in EXCHANGE:SYMBOL format.
-                csvData$Symbol <- paste(exchange, csvData$Symbol, sep = ":")
-            }
-            write.csv(csvData, file = dataFile, row.names = FALSE)
-        }
 
         # Output filename
         dataFile

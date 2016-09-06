@@ -2,12 +2,11 @@
 % Please edit documentation in R/downloadExchangeCompanyList.R
 \name{downloadExchangeCompanyList}
 \alias{downloadExchangeCompanyList}
-\title{Download Company Lists From Exchanges
-Download Company Lists From Financial Exchanges such as NASDAQ, NYSE, AMEX.
-Save the Company List in csv format.}
+\title{Download Company Lists From Exchanges}
 \usage{
-downloadExchangeCompanyList(exchanges, dataFolder,
-  fileNameAppend = "companylist")
+downloadExchangeCompanyList(exchanges, dataFolder = "./data",
+  fileNameAppend = "companylist", outputColumns = c("Symbol", "Name"),
+  formatSymbol = TRUE)
 }
 \arguments{
 \item{exchanges}{Name of the Exchange(s). Supported: NASDAQ, NYSE, AMEX.}
@@ -15,17 +14,20 @@ downloadExchangeCompanyList(exchanges, dataFolder,
 \item{dataFolder}{Folder the Company List will be saved.}
 
 \item{fileNameAppend}{Append file name. Default "companylist".}
+
+\item{outputColumns}{Specify output columns. Default c("Symbol", "Name").}
+
+\item{formatSymbol}{Format symbols in EXCHANGE:SYMBOL. Default TRUE.}
 }
 \value{
 Exported Filenames.
 }
 \description{
-Download Company Lists From Exchanges
 Download Company Lists From Financial Exchanges such as NASDAQ, NYSE, AMEX.
 Save the Company List in csv format.
 }
 \examples{
 downloadExchangeCompanyList("NASDAQ", "./data", "companylist") => Downloads NASDAQ Companies to ./data/nasdaq-companylist.csv.
-downloadExchangeCompanyList(c("NYSE, AMEX"), "./company", "list") => Downloads NYSE and AMEX Companies to ./company/nasdaq-list.csv and ./company/nasdaq-list.csv.
+downloadExchangeCompanyList(c("NYSE", "AMEX"), "./company", "list") => Downloads NYSE and AMEX Companies to ./company/nasdaq-list.csv and ./company/nasdaq-list.csv.
 }
 

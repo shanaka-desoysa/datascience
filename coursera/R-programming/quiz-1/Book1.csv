@@ -1,0 +1,22 @@
+ID,IsTest,Description,Day
+1000,TRUE,Testing 1,Monday
+1001,FALSE,Testing 2,Tuesday
+1002,TRUE,Testing 3,Wednesday
+1003,FALSE,Testing 4,Thursday
+1004,TRUE,Testing 5,Friday
+1005,FALSE,Testing 6,Saturday
+1006,TRUE,Testing 7,Sunday
+1007,FALSE,Testing 8,Monday
+1008,TRUE,Testing 9,Tuesday
+1009,FALSE,Testing 10,Wednesday
+1010,TRUE,Testing 11,Thursday
+1011,FALSE,Testing 12,Friday
+1012,TRUE,Testing 13,Saturday
+1013,FALSE,Testing 14,Sunday
+1014,TRUE,Testing 15,Monday
+1015,FALSE,Testing 16,Tuesday
+1016,TRUE,Testing 17,Wednesday
+1017,FALSE,Testing 18,Thursday
+1018,TRUE,Testing 19,Friday
+1019,FALSE,Testing 20,Saturday
+1020,TRUE,Testing 21,Sunday

@@ -4,7 +4,7 @@
 #' @param expected Expected value.
 #' @param msg Prepend message.
 #'
-#' @return
+#' @return Message.
 #' @export
 #'
 #' @examples printActualExpected("Test", 5, 10)

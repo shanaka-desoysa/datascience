@@ -1,13 +1,13 @@
 #' Title
 #'
-#' @param csvFile
-#' @param colName
-#' @param take
+#' @param csvFile CSV file to read.
+#' @param colName Column name of the CSV file. Default "Symbol".
+#' @param take How many records to take at a time. Default 5.
 #'
-#' @return
-#' @export
+#' @return Data frame with comma seperated rows.
+#' @export 
 #'
-#' @examples
+#' @examples getCommaSeperatedListOfRows("data1/NASDAQ-companylist.csv")
 getCommaSeperatedListOfRows <- function(csvFile, colName = "Symbol", take = as.integer(5)) {
     if (!is.numeric(take)) {
         stop("Parameter take must be an integer.")
