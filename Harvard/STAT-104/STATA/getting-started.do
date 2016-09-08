@@ -1,0 +1,3 @@
+sysuse auto
+browse
+display
