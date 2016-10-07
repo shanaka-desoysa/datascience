@@ -19,3 +19,8 @@ setwd("PackageName")
 devtools::document()
 devtools::test()
 ```
+
+## Add a Test File
+```R
+devtools::use_test("TestName")
+```
